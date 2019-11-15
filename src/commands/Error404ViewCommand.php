@@ -3,13 +3,12 @@
 namespace devmtm\NovaCustomViews;
 
 use Illuminate\Support\Str;
-use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Laravel\Nova\Console\Concerns\AcceptsNameAndVendor;
 use Laravel\Nova\Nova;
 use Symfony\Component\Process\Process;
 
-class Error404ViewCommand extends Command
+class Error404ViewCommand extends CustomCommand
 {
     /**
      * The name and signature of the console command.
@@ -121,56 +120,6 @@ class Error404ViewCommand extends Command
             base_path('package.json'),
             json_encode($package, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
-    }
-
-    /**
-     * Install the views's NPM dependencies.
-     *
-     * @return void
-     */
-    protected function installNpmDependencies()
-    {
-        $this->runCommand('npm set progress=false && npm install', $this->viewsPath());
-    }
-
-    /**
-     * Compile the views's assets.
-     *
-     * @return void
-     */
-    protected function compile()
-    {
-        $this->runCommand('npm run dev', $this->viewsPath());
-    }
-
-    /**
-     * Update the project's composer dependencies.
-     *
-     * @return void
-     */
-    protected function composerUpdate()
-    {
-        $this->runCommand('composer update', getcwd());
-    }
-
-    /**
-     * Run the given command as a process.
-     *
-     * @param  string  $command
-     * @param  string  $path
-     * @return void
-     */
-    protected function runCommand($command, $path)
-    {
-        $process = (new Process($command, $path))->setTimeout(null);
-
-        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
-            $process->setTty(true);
-        }
-
-        $process->run(function ($type, $line) {
-            $this->output->write($line);
-        });
     }
 
     /**
