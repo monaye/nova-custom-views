@@ -1,6 +1,6 @@
 <?php
 
-namespace devmtm\NovaCustomViews;
+namespace NovaCustomViews\Commands;
 
 use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;

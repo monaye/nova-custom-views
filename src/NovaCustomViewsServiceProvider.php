@@ -1,6 +1,6 @@
 <?php
 
-namespace devmtm\NovaCustomViews;
+namespace NovaCustomViews;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;

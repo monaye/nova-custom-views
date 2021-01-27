@@ -1,7 +1,7 @@
 <?php
 
 
-namespace devmtm\NovaCustomViews;
+namespace NovaCustomViews\Commands;
 
 
 use Symfony\Component\Console\Output\OutputInterface;
