@@ -2,10 +2,14 @@
 
 namespace NovaCustomViews;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Collection;
 use Laravel\Nova\Nova;
+use Illuminate\Support\Collection;
 use Laravel\Nova\Events\ServingNova;
+use Illuminate\Support\ServiceProvider;
+use NovaCustomViews\Commands\ViewsCommand;
+use NovaCustomViews\Commands\Error403ViewCommand;
+use NovaCustomViews\Commands\Error404ViewCommand;
+use NovaCustomViews\Commands\DashboardViewCommand;
 
 class NovaCustomViewsServiceProvider extends ServiceProvider
 {
